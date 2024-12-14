@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import { apiURL } from '../../config/constanst';
 import { useAuth } from '../../hooks/useAuth';
 import { useAppSelector } from '../../hooks/useRedux';
 import { IRootState } from '../../redux';
@@ -26,7 +27,7 @@ const Header: React.FC<IHeaderProps> = (props) => {
       console.log("hehehe")
 
       // Gọi API logout sử dụng fetch
-      const response = await fetch(`http://localhost:8080/api/auth/logout`, {
+      const response = await fetch(`${apiURL}/api/auth/logout`, {
         method: 'POST', // Phương thức POST
         headers: {
           'Authorization': `Bearer ${token}`, // Gửi token xác thực trong header

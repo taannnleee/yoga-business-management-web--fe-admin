@@ -12,6 +12,7 @@ import { apiURL } from '../config/constanst';
 import SockJS from "sockjs-client";
 import { Client, StompSubscription } from "@stomp/stompjs";
 
+
 export const useAuth = () => {
   const [loginWithGoogle] = useSignInWithGoogle(auth);
 
@@ -29,7 +30,7 @@ export const useAuth = () => {
     console.log('Username, password', username);
     try {
       setLoginLoading(true);
-      const response = await fetch('http://localhost:8080/api/auth/login-admin', {
+      const response = await fetch(`${apiURL}/api/auth/login-admin`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
