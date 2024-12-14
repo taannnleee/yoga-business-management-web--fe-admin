@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { apiURL } from '../../config/constanst';
 import {
     Box,
     Typography,
@@ -50,7 +51,7 @@ const OrderManagement = () => {
             try {
                 const accessToken = localStorage.getItem("accessToken");
                 const response = await fetch(
-                    `http://localhost:8080/api/admin/get-all-order-of-user-by-status/${selectedStatus}?sortBy=createdAt&sortDir=desc`,
+                    `${apiURL}/api/admin/get-all-order-of-user-by-status/${selectedStatus}?sortBy=createdAt&sortDir=desc`,
                     {
                         method: "GET",
                         headers: {
@@ -69,7 +70,7 @@ const OrderManagement = () => {
 
                 // Thiết lập kết nối WebSocket
                 if (!stompClientRef.current) {
-                    const socket = new SockJS("http://localhost:8080/ws");
+                    const socket = new SockJS(`${apiURL}/ws`);
                     const stompClient = new Client({
                         webSocketFactory: () => socket,
                         debug: (str: string) => console.log(str),
@@ -125,7 +126,7 @@ const OrderManagement = () => {
         const accessToken = localStorage.getItem("accessToken");
         try {
             const response = await fetch(
-                `http://localhost:8080/api/admin/update-order-status/${orderId}`,
+                `${apiURL}/api/admin/update-order-status/${orderId}`,
                 {
                     method: "PATCH",
                     headers: {

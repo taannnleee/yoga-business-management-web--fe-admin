@@ -182,7 +182,7 @@ const UserManagement = () => {
       addLoadingEffect && setLoading(true);
       const accessToken = localStorage.getItem('accessToken'); // Retrieve token from localStorage
 
-      const response = await fetch('http://localhost:8080/api/admin/getAllUser', {
+      const response = await fetch(`${apiURL}/api/admin/getAllUser`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

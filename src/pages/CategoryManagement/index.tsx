@@ -110,7 +110,7 @@ const CategoryManagement: React.FC = () => {
     const accessToken = localStorage.getItem('accessToken');
     try {
       await axios.post(
-        `http://localhost:8080/api/admin/add-subcategory`,
+        `${apiURL}/api/admin/add-subcategory`,
         {
           name: subcategoryName,
           categoryId: selectedCategoryId,

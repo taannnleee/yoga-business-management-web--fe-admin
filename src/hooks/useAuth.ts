@@ -59,7 +59,7 @@ export const useAuth = () => {
         // dispatch(setUser(response?.data?.data as any));
         // dispatch(setAccessToken(response?.data?.data?.accessToken));
         // Khởi tạo WebSocket sau khi đăng nhập thành công
-        const socket = new SockJS("http://localhost:8080/ws");
+        const socket = new SockJS(`${apiURL}/ws`);
         const stompClient = new Client({
           webSocketFactory: () => socket,
           debug: (str: string) => console.log(str),

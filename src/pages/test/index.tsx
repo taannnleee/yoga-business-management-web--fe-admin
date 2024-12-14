@@ -2,11 +2,11 @@
 import { useEffect } from "react";
 import SockJS from "sockjs-client";
 import { Client, StompSubscription } from "@stomp/stompjs";
-
+import { apiURL } from '../../config/constanst';
 const WebSocketDemo: React.FC = () => {
     useEffect(() => {
         // Tạo kết nối SockJS
-        const socket = new SockJS("http://localhost:8080/ws");
+        const socket = new SockJS(`${apiURL}/ws`);
         const stompClient = new Client({
             webSocketFactory: () => socket,
             debug: (str: string) => console.log(str),
